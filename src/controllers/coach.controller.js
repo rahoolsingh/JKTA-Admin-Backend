@@ -31,6 +31,7 @@ const pendingCoaches = async (req, res) => {
     try {
         const coaches = await Coach.find({
             status: "pending",
+            payment: true,
         });
         res.json(coaches);
     } catch (error) {
@@ -42,6 +43,7 @@ const pendingCoachesCount = async (req, res) => {
     try {
         const count = await Coach.countDocuments({
             status: "pending",
+            payment: true,
         });
         res.json({ count });
     } catch (error) {

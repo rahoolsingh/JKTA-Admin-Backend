@@ -31,6 +31,7 @@ const pendingAtheletes = async (req, res) => {
     try {
         const atheletes = await Athelete.find({
             status: "pending",
+            payment: true,
         });
         res.json(atheletes);
     } catch (error) {
@@ -42,6 +43,7 @@ const pendingAtheletesCount = async (req, res) => {
     try {
         const count = await Athelete.countDocuments({
             status: "pending",
+            payment: true,
         });
         res.json({ count });
     } catch (error) {
