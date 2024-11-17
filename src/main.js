@@ -1,6 +1,13 @@
 import app from "./app.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cors from "cors";
+
+app.use(
+    cors({
+        origin: process.env.FRONTEND_URL,
+    })
+);
 
 dotenv.config();
 
