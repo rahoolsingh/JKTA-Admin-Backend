@@ -5,6 +5,7 @@ import { deleteFiles, generateCard } from "../utils/idcard.js";
 import AtheleteEnrollment from "../models/athleteEnrollment.model.js";
 import { sendWithAttachment } from "./mail.controller.js";
 import { downloadImage } from "../utils/downloadImage.js";
+import expiryDate from "../utils/expiryDate.js";
 
 const listAtheletes = async (req, res) => {
     try {
@@ -116,7 +117,7 @@ const markStatusApproved = async (req, res) => {
             name: atheleteData.athleteName,
             parentage: atheleteData.fatherName,
             gender: atheleteData.gender,
-            valid: "2022-12-31",
+            valid: expiryDate(atheleteData.createdAt),
             district: atheleteData.district,
             dob: `${atheleteData.dob}`,
         });
