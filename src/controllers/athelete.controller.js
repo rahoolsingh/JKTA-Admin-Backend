@@ -9,9 +9,11 @@ import expiryDate from "../utils/expiryDate.js";
 
 const listAtheletes = async (req, res) => {
     try {
-        const atheletes = await Athelete.find({
-            payment: true,
-        });
+        // const atheletes = await Athelete.find({
+        //     payment: true,
+        // });
+
+        const atheletes = await Athelete.find() // find all atheletes - 5feb 2025 as per request
 
         // sort the atheletes by status pending, approved, rejected
         atheletes.sort((a, b) => {
@@ -32,7 +34,7 @@ const pendingAtheletes = async (req, res) => {
     try {
         const atheletes = await Athelete.find({
             status: "pending",
-            payment: true,
+            // payment: true,
         });
         res.json(atheletes);
     } catch (error) {
@@ -44,7 +46,7 @@ const pendingAtheletesCount = async (req, res) => {
     try {
         const count = await Athelete.countDocuments({
             status: "pending",
-            payment: true,
+            // payment: true,
         });
         res.json({ count });
     } catch (error) {
@@ -54,9 +56,12 @@ const pendingAtheletesCount = async (req, res) => {
 
 const allAtheletesCount = async (req, res) => {
     try {
-        const count = await Athelete.countDocuments({
-            payment: true,
-        });
+        // const count = await Athelete.countDocuments({
+        //     payment: true,
+        // });
+
+        const count = await Athelete.countDocuments(); // count all atheletes - 5feb 2025 as per request
+
         res.json({ count });
     } catch (error) {
         res.json({ message: error.message });
