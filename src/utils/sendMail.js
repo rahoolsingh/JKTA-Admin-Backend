@@ -44,7 +44,7 @@ const sendMail = async (to, subject, text, html) => {
     const mailOptions = {
         from: {
             name: "DRS Technology",
-            address: process.env.SMTP_EMAIL,
+            address: process.env.SMTP_MAIL_ADDRESS,
         },
         to,
         subject,
