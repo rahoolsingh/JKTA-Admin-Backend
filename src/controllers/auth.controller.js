@@ -20,15 +20,15 @@ const sendOtp = async (req, res) => {
         await sendMail(
             email,
             "OTP for Login",
-            `Your OTP is ${otp}. It will expire in 5 minutes.`,
-            `<h1>Your OTP is ${otp}</h1><p>It will expire in 5 minutes.</p>
-            <p>Do not share this OTP with anyone.</p>
-            <p>If you did not request this OTP, please ignore this email.</p>`
+            `Your CODE is ${otp}. It will expire in 5 minutes.`,
+            `<h1>Your CODE is ${otp}</h1><p>It will expire in 5 minutes.</p>
+            <p>Do not share this CODE with anyone.</p>
+            <p>If you did not request this CODE, please ignore this email.</p>`
         );
 
-        res.status(200).json({ message: "OTP sent successfully" });
+        res.status(200).json({ message: "CODE sent successfully" });
     } catch (error) {
-        console.error("Error sending OTP:", error);
+        console.error("Error sending CODE:", error);
         res.status(500).json({ message: "Internal server error" });
     }
 };
@@ -111,14 +111,14 @@ const resendOtp = async (req, res) => {
 
         await sendMail(
             email,
-            "OTP for Login",
-            `Your OTP is ${otp}. It will expire in 5 minutes.`,
-            `<h1>Your OTP is ${otp}</h1><p>It will expire in 5 minutes.</p>`
+            "CODE for Login",
+            `Your CODE is ${otp}. It will expire in 5 minutes.`,
+            `<h1>Your CODE is ${otp}</h1><p>It will expire in 5 minutes.</p>`
         );
 
-        res.status(200).json({ message: "OTP sent successfully" });
+        res.status(200).json({ message: "CODE sent successfully" });
     } catch (error) {
-        console.error("Error resending OTP:", error);
+        console.error("Error resending CODE:", error);
         res.status(500).json({ message: "Internal server error" });
     }
 };

@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const FROM = process.env.SMTP_EMAIL_FROM;
+
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
@@ -13,7 +15,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const sendMail = async (to, subject, text, html) => {
+const sendMail = async (to, subject, text, html, from = FROM) => {
     // Validate email and other inputs
     if (!to || !subject || !html) {
         console.error(
@@ -42,10 +44,7 @@ const sendMail = async (to, subject, text, html) => {
     </div>`;
 
     const mailOptions = {
-        from: {
-            name: "DRS Technology",
-            address: process.env.SMTP_MAIL_ADDRESS,
-        },
+        from,
         to,
         subject,
         text,

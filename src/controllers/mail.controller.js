@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 
 dotenv.config();
+const FROM = process.env.SMTP_EMAIL_FROM;
 
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -13,12 +14,9 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const sendMail = (to, subject, text, html, attachments) => {
+const sendMail = (to, subject, text, html, attachments, from = FROM) => {
     const mailOptions = {
-        from: {
-            name: "JKTA | DRS Technology",
-            address: process.env.SMTP_EMAIL,
-        },
+        from,
         to,
         subject,
         text,
