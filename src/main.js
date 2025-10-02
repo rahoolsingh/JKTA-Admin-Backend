@@ -2,7 +2,7 @@ import app from "./app.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-dotenv.config();
+dotenv.config({ path: '/etc/secrets/.env' });
 
 const PORT = process.env.PORT || 5000;
 
